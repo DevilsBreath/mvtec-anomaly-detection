@@ -25,7 +25,7 @@ Unsupervised anomaly detection on the MVTec Anomaly Detection benchmark using Pa
 | zipper       | 0.9751      | 0.9815      |
 | **MEAN**     | **0.9824**  | **0.9801**  |
 
-<!-- *Fill in after running `scripts/run_patchcore.py`* -->
+![PatchCore Image AUROC by Category](docs/images/patchcore_image_auroc_bar.png)
 
 ### PatchCore vs EfficientAD (5 categories)
 
@@ -37,6 +37,13 @@ Unsupervised anomaly detection on the MVTec Anomaly Detection benchmark using Pa
 | metal_nut | 0.987 | 0.960 | 
 | transistor | 0.927 | 0.925 | 
 | **MEAN** | **0.955** | **0.934** |
+
+![PatchCore vs EfficientAD AUROC Comparison](docs/images/patchcore_vs_efficientad.png)
+
+### Anomaly Maps (Visual Localization)
+Below is an example of anomaly localization results on the `bottle` category using PatchCore, showing the original image, generated anomaly heatmap, and the visual overlay:
+
+![MVTec Bottle Anomaly Map Visualizations](docs/images/bottle_anomaly_maps.png)
 
 ---
 
