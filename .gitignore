@@ -1,0 +1,41 @@
+# Data and Datasets — never commit these
+data/
+datasets/
+Model/
+
+# Model artifacts
+*.npy
+*.pt
+*.pth
+*.ckpt
+
+# MLflow
+mlruns/
+mlflow.db
+*.db
+
+# Logs
+logs/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Results
+results/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

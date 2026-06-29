@@ -1,0 +1,43 @@
+# configs/efficientad.yaml
+# EfficientAD configuration for comparison experiments
+
+model:
+  name: efficientad
+  teacher_backbone: efficientnet_b4  # pretrained teacher network
+  input_size: [256, 256]
+  pad_maps: true
+
+dataset:
+  root: data/mvtec
+  image_size: [256, 256]
+  train_batch_size: 1              # EfficientAD uses batch size 1 during training
+  test_batch_size: 32
+  num_workers: 4
+
+# Run on subset first for speed comparison
+categories:
+  - bottle
+  - carpet
+  - hazelnut
+  - metal_nut
+  - transistor
+
+trainer:
+  max_steps: 10000
+
+evaluation:
+  metrics:
+    - image_auroc
+    - pixel_auroc
+  save_anomaly_maps: true
+  save_visualizations: true
+  benchmark_inference: true        # log FPS and latency
+
+mlflow:
+  experiment_name: efficientad_comparison
+  tracking_uri: sqlite:///mlflow.db
+  log_artifacts: true
+
+output:
+  results_dir: results/efficientad
+  log_dir: logs

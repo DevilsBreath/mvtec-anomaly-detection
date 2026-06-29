@@ -1,0 +1,53 @@
+# configs/patchcore.yaml
+# PatchCore baseline configuration
+
+model:
+  name: patchcore
+  backbone: wide_resnet50_2        # feature extractor (pretrained, frozen)
+  layers_to_extract:
+    - layer2
+    - layer3
+  coreset_sampling_ratio: 0.1      # 10% of patches kept in memory bank
+  num_neighbors: 9                 # k-NN neighbors for anomaly scoring
+
+dataset:
+  root: data/mvtec
+  image_size: [224, 224]
+  train_batch_size: 32
+  test_batch_size: 32
+  num_workers: 4                   # reduce to 0 if you hit Windows multiprocessing issues
+
+# Categories to run — comment out any you want to skip
+categories:
+  - bottle
+  - cable
+  - capsule
+  - carpet
+  - grid
+  - hazelnut
+  - leather
+  - metal_nut
+  - pill
+  - screw
+  - tile
+  - toothbrush
+  - transistor
+  - wood
+  - zipper
+
+evaluation:
+  metrics:
+    - image_auroc
+    - pixel_auroc
+    - pro_score
+  save_anomaly_maps: true
+  save_visualizations: true
+
+mlflow:
+  experiment_name: patchcore_baseline
+  tracking_uri: sqlite:///mlflow_1.db              # local MLflow SQLite backend
+  log_artifacts: true
+
+output:
+  results_dir: results/patchcore_full
+  log_dir: logs
